@@ -12,6 +12,8 @@ export default function WeightMUT() {
         return (val / 10);
       }else if(scale === 'mg'){
         return (val / 1000000);
+      }else if(scale === 'lb'){
+        return (val * 0.45359237);
       }
     }
     
@@ -22,6 +24,8 @@ export default function WeightMUT() {
         return (val * 10);
       }else if(scale === 'mg'){
         return (val / 1000);
+      }else if(scale === 'lb'){
+        return (val * 453.59237);
       }
     }
   
@@ -32,6 +36,8 @@ export default function WeightMUT() {
         return (val * 100);
       }else if(scale === 'mg'){
         return (val / 10000);
+      }else if(scale === 'lb'){
+        return (val * 45.359237);
       }
     }
     
@@ -42,8 +48,22 @@ export default function WeightMUT() {
         return (val * 10000);
       }else if(scale === 'g'){
         return (val * 1000);
+      }else if(scale === 'lb'){
+        return (val * 453592.37);
       }
     }
+
+    function toPound(val, scale) {
+        if(scale === 'kg'){
+          return (val * 2.20462262);
+        }else if(scale === 'dag'){
+          return (val * 0.0220462262);
+        }else if(scale === 'g'){
+          return (val * 0.00220462262);
+        }else if(scale === 'mg'){
+            return (val * 0.00003527396);
+          }
+      }
     
     function tryConvert(weight, convert, scale) {
       const input = parseFloat(weight);
@@ -78,6 +98,11 @@ export default function WeightMUT() {
       setScale('mg');
       setWeight(weight);
     }
+
+    function handlelbChange(weight){
+        setScale('lb');
+        setWeight(weight);
+      }
   
     
     const weightVal = weight;
@@ -86,6 +111,7 @@ export default function WeightMUT() {
     const decagram = scale !== 'dag' ? tryConvert(weightVal, toDecagram, scale) : weightVal;
     const gram = scale !== 'g' ? tryConvert(weightVal, toGram, scale) : weightVal;
     const miligram = scale !== 'mg' ? tryConvert(weightVal, toMiligram, scale) : weightVal;
+    const pound = scale !== 'lb' ? tryConvert(weightVal, toPound, scale) : weightVal;
   
     return (
       <div className="App">
@@ -93,6 +119,7 @@ export default function WeightMUT() {
         <ValueInput weight={decagram} scale="dag" onWeightChange={handledagChange}/>
         <ValueInput weight={gram} scale="g" onWeightChange={handlegChange}/>
         <ValueInput weight={miligram} scale="mg" onWeightChange={handlemgChange}/>
+        <ValueInput weight={pound} scale="lb" onWeightChange={handlelbChange}/>
       </div>
     );
 }

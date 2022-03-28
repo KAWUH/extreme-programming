@@ -36,3 +36,85 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  text-align: center;
+  background-color: #3e69be;
+  height: 100%;
+}
+
+.App {
+  margin-top: 8%;
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 70%;
+  height: 100%;
+  background-color: #cccccc;
+  border-radius: 12px;
+  padding-bottom: 2%;
+}
+
+.mut-text {
+  margin-top: 2%;
+  margin-bottom: 3%;
+}
+
+.container {
+  width: 20%;
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.mut-list {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+    width: 100%;
+}    .mut-list select {
+        font-family: 'Arial';
+        display: inline-block;
+        width: 100%;
+        cursor: pointer;
+        padding: 10px 15px;
+        outline: 0;
+        border: 0px solid #000000;
+        border-radius: 9px;
+        background: #282c34;
+        color: #cdcdcd;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+        .select select::-ms-expand {
+            display: none;
+        }
+        .select select:hover,
+        .select select:focus {
+            color: #e2e2e2;
+            background: #282c34;
+        }
+        .select select:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+.select_arrow {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    width: 0px;
+    height: 0px;
+    border: solid #7b7b7b;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+.select select:hover ~ .select_arrow,
+.select select:focus ~ .select_arrow {
+    border-color: #000000;
+}
+.select select:disabled ~ .select_arrow {
+    border-top-color: #cccccc;
+}
+

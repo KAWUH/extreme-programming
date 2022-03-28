@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Units() {
+export default function Units(props) {
   return (
-    <div>Units</div>
+    <div className='mut-text'><h1>Values of {props.type}</h1></div>
   )
 }
