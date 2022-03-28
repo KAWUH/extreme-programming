@@ -1,9 +1,23 @@
 import React from 'react'
 
 export default function ValueInput(props) {
+
+    const scaleNames = {
+        kg: 'kiliogram',
+        g: 'gram'
+      };
+
+    function handleChange(e) {
+        props.onWeightChange(e.target.value);
+    }
+
+    const weight = props.weight;
+    const scale = props.scale;
+
   return (
     <div>
-        <input type="number" id={props.id}></input>
+        <legend>Podaj wagę w {scaleNames[scale]}:</legend>
+        <input type="number" value={weight} onChange={handleChange}></input>
     </div>
   )
 }

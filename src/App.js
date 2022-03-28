@@ -8,11 +8,6 @@ function App() {
   const [weight, setWeight] = useState('');
   const [scale, setScale] = useState('kg');
 
-  const scaleNames = {
-    kg: 'kiliogram',
-    g: 'gram'
-  };
-
   function toKilogram(gram) {
     return (gram / 1000);
   }
@@ -35,26 +30,30 @@ function App() {
 
 
 
-  function handlekgChange(){
-
+  function handlekgChange(weight){
+    setScale('kg');
+    setWeight(weight);
   }
 
-  function handlegChange(){
-
+  function handlegChange(weight){
+    setScale('g');
+    setWeight(weight);
   }
+
   
-  const weightVal = this.state.weight;
+  
+  const weightVal = weight;
 
-  const kilogram = scale === 'kg' ? tryConvert(weightVal, toGram) : weightVal;
+  const kilogram = scale === 'g' ? tryConvert(weightVal, toKilogram) : weightVal;
   /*const decagram = scale === 'dag' ? tryConvert(temperature, toFahrenheit) : temperature;*/
-  const gram = scale === 'g' ? tryConvert(weightVal, toKilogram) : weightVal;
+  const gram = scale === 'kg' ? tryConvert(weightVal, toGram) : weightVal;
   /*const miligram = scale === 'mg' ? tryConvert(temperature, toFahrenheit) : temperature;*/
 
   return (
     <div className="App">
-      <ValueInput weight={kilogram} scale="kg" onValueChange={handlekgChange}/>
+      <ValueInput weight={kilogram} scale="kg" onWeightChange={handlekgChange}/>
       {/*<ValueInput weight={decagram} scale="dag" onValueChange={handledagChange}/>*/}
-      <ValueInput weight={gram} scale="g" onValueChange={handlegChange}/>
+      <ValueInput weight={gram} scale="g" onWeightChange={handlegChange}/>
        {/*<ValueInput weight={miligram} scale="mg" onValueChange={handlemgChange}/>*/}
     </div>
   );
